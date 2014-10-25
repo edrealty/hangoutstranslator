@@ -6,8 +6,20 @@
     </ModulePrefs>
     <Content type="html">
         <![CDATA[
+        <html>
+            <head>
       <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-      <!-- Your application code -->
+
+      <style>
+          body {
+            opacity: 0;
+            }
+        </style>
+    </head>
+        <body>
+            hello
+        </body>
+    </html>
     ]]>
     </Content>
 </Module>

@@ -6,6 +6,10 @@
     </ModulePrefs>
     <Content type="html">
         <![CDATA[
+
+      <html>
+      <body>
+      <div id="div1">
       <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
       <script>
         gapi.hangout.onApiReady.add(function(eventObj){
@@ -13,7 +17,19 @@
             startMyApp();
         }
         });
+
+        var startMyApp = function() {
+            var para = document.createElement("p");
+            var node = document.createTextNode("This is new.");
+            para.appendChild(node);
+
+            var element = document.getElementById("div1");
+            element.appendChild(para);
+        }
         </script>
+        </div>
+        </body>
+        </html>
     ]]>
     </Content>
 </Module>

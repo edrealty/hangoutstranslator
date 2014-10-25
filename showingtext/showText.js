@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log("READY!!!!!");
 
     $('#stringToShow').on('change', function() {
         var temp = gapi.hangout.av.effects.createImageResource(

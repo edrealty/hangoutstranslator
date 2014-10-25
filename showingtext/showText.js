@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $'#stringToShow').on('change', function() {
+    $('#stringToShow').on('change', function() {
         var temp = gapi.hangout.av.effects.createImageResource(
           createTextOverlay($(this).val()));
         // Create this non-moving overlay that will be 100% of the width

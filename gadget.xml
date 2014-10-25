@@ -6,20 +6,14 @@
     </ModulePrefs>
     <Content type="html">
         <![CDATA[
-        <html>
-            <head>
       <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-
-      <style>
-          body {
-            opacity: 0;
-            }
-        </style>
-    </head>
-        <body>
-            hello
-        </body>
-    </html>
+      <script>
+        gapi.hangout.onApiReady.add(function(eventObj){
+        if (eventObj.isApiReady) {
+            startMyApp();
+        }
+        });
+        </script>
     ]]>
     </Content>
 </Module>

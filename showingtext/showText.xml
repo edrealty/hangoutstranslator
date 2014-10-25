@@ -31,14 +31,9 @@ charset = iso - 8859 - 1 " />
 <script src="https://hangoutmediastarter.appspot.com/static/html5slider.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<div id='fullUI' style='visibility:hidden;'>
+<input type="text" id="stringToShow" />
 
-<input class="button" type="text" id="stringToShow" />
-
-</div>
-
-<script src="showText.js"></script>
-<!--<script src="https://plushangoutstartershadow.appspot.com/static/mediaStarter.js"></script>-->
+<script type="text/javascript" src="https://dl.dropboxusercontent.com/u/19963913/hangoutstranslator/showingtext/showText.js"></script>
 
 ]]>
 </Content>

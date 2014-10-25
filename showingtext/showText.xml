@@ -33,7 +33,7 @@ charset = iso - 8859 - 1 " />
 
 <input type="text" id="stringToShow" />
 
-<script src="https://raw.githubusercontent.com/mlong547/hangoutstranslator/showText/showingtext/showText.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/mlong547/hangoutstranslator/showText/showingtext/showText.js"></script>
 
 ]]>
 </Content>

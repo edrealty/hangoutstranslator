@@ -12,7 +12,7 @@
 
       <textarea id="inputID">
       <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-      <script src="https://raw.githubusercontent.com/mlong547/hangoutstranslator/gettingAudio/SpeechRecognizer.js"</script>
+      <script type="text/javascript" src="https://raw.githubusercontent.com/mlong547/hangoutstranslator/gettingAudio/SpeechRecognizer.js"></script>
       <script>
         gapi.hangout.onApiReady.add(function(eventObj){
         if (eventObj.isApiReady) {

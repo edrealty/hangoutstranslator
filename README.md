@@ -1,0 +1,4 @@
+hangoutstranslator
+==================
+
+HackNC Hangouts Translator

@@ -6,7 +6,7 @@ function createTextOverlay(string) {
   // Create a canvas to draw on
   var canvas = document.createElement('canvas');
   canvasWidth = 4000;
-  canvasHeight = 400;
+  canvasHeight = 800;
   canvas.setAttribute('width', canvasWidth);
   canvas.setAttribute('height', canvasHeight);
   canvas.width = canvasWidth;
@@ -14,13 +14,15 @@ function createTextOverlay(string) {
 
   
   var context = canvas.getContext('2d');
+  /*
   context.translate(canvas.width, 0);
   context.scale(-1, 1);
+  */
 
   context.imageSmoothingEnabled = true;
 
   // Draw text
-  context.font = '128pt serif';
+  context.font = '256pt serif';
   context.lineWidth = 10;
   context.lineStyle = '#000000';
   context.fillStyle = '#FFFFFF';
@@ -58,18 +60,27 @@ function init() {
         console.log("everything ready");
 
         gapi.hangout.data.setValue(
-            gapi.hangout.getLocalParticipantId(), "bg");
-        console.log("my language " + gapi.hangout.data.getState()[gapi.hangout.getLocalParticipantId()]);
+            gapi.hangout.getLocalParticipant().person.id, "en");
+        console.log("my language " + gapi.hangout.data.getState()[gapi.hangout.getLocalParticipant().person.id]);
 
         $('#mylanguage').on('change', function() {
             gapi.hangout.data.setValue(
-                gapi.hangout.getLocalParticipantId(), $("#mylanguage").val());
+                gapi.hangout.getLocalParticipant().person.id, $("#mylanguage").val());
 
-        console.log("my language " + gapi.hangout.data.getState()[gapi.hangout.getLocalParticipantId()]);
+        console.log("my language " + gapi.hangout.data.getState()[gapi.hangout.getLocalParticipant().person.id]);
         });
-        setTimeout(function() {
-            captureVoice();
-        }, 1000);
+
+        $('#startTranslation').on('click', function() {
+            setTimeout(function() {
+                captureVoice();
+            }, 2000);
+        });
+
+        $('sendTranscript').on('click', function() {
+            var id = gapi.hangout.getLocalParticipant().person.id;
+            var tid = id + gapi.hangout.data.getValue(id);
+            getTranscript(tid);
+        });
     });
 }
 

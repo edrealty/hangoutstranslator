@@ -32,7 +32,7 @@ charset = iso - 8859 - 1 " />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <h2 id="whatlanguage">What language do you speak?</h2>
-<select id="mylanguage">
+<select id="mylanguage" value="en">
     <option value="bg">Bulgarian</option>
     <option value="cs">Chinese</option>
     <option value="de">Dutch</option>
@@ -47,6 +47,11 @@ charset = iso - 8859 - 1 " />
     <option value="tr">Turkish</option>
     <option value="uk">Ukrainian</option>
 </select>
+
+<button id="startTranslation"></button>
+<button id="sendTranscript"></button>
+<input id="myemail" />
+
 
 <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/19963913/hangoutstranslator/js/showText.js"></script>
 <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/19963913/hangoutstranslator/js/speech.js"></script>

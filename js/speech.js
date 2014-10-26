@@ -30,11 +30,13 @@ function captureVoice() {
     var recognition = new webkitSpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
+    
 
-    var id = gapi.hangout.getLocalParticipantId();
+    var id = gapi.hangout.getLocalParticipant().person.id;
     var transcriptid = id + "" + gapi.hangout.data.getValue(id);
     gapi.hangout.data.setValue(transcriptid, "");
 
+    recognition.lang = gapi.hangout.data.getValue(id);
 
     var theirid = '';
     var theirtranscriptid = '';
@@ -49,7 +51,7 @@ function captureVoice() {
 
                 console.log(line);
 
-                id = gapi.hangout.getLocalParticipantId();
+                id = gapi.hangout.getLocalParticipant().person.id;
                 transcriptid = id + "" + gapi.hangout.data.getValue(id);
 
                 console.log("my id " + id);
@@ -57,12 +59,16 @@ function captureVoice() {
                 console.log("my language " + gapi.hangout.data.getValue(id));
 
                 updateTranscript(transcriptid, gapi.hangout.data.getValue(id), line);
-
-                for (i = 0; i < 2; i++) {
-                    potentialid = gapi.hangout.getEnabledParticipants()[i];
-                    if (id != potentialid) {
-                        theirid = potentialid;
+                if (gapi.hangout.getEnabledParticipants().length > 1) {
+                    console.log("SomeoneElse");
+                    for (i = 0; i < 2; i++) {
+                        potentialid = gapi.hangout.getEnabledParticipants()[i].person.id;
+                        if (id != potentialid) {
+                            theirid = potentialid;
+                            console.log(theirid);
+                        }
                     }
+                    console.log(gapi.hangout.data.getState());
                 }
                 if (theirid) {
                     theirtranscriptid = theirid + 
@@ -77,12 +83,14 @@ function captureVoice() {
                 }
 
                     
+                /*
                 setTimeout(function() {
                     getTranscript(transcriptid);
                     if (theirtranscriptid) {
                         getTranscript(theirtranscriptid);
                     }
                 }, 2000);
+                */
 
             } else {
                 //console.log(event.results[i][0].transcript);
@@ -103,32 +111,37 @@ function captureVoice() {
         recognition.start();
     }
 
-    window.onbeforeunload = function() {
-        confirm();
-        alert(getTranscript(transcriptId));
-    }
 }
 
 function updateTranscript(tid, lang, line) {
-    console.log("transcriptid " + tid);
+    //console.log("transcriptid " + tid);
 
     var currentTranscript = gapi.hangout.data.getState()[tid];
-    console.log("currentTranscript " + currentTranscript);
+    //console.log("currentTranscript " + currentTranscript);
     
     currentTranscript += Date().toString() + " ";
     currentTranscript += gapi.hangout.getLocalParticipant().person.displayName;
     currentTranscript += ": " + line + "\n";
 
-    console.log("should be new " + currentTranscript);
+    //console.log("should be new " + currentTranscript);
 
     gapi.hangout.data.setValue("" + tid, "" + currentTranscript);
-    console.log("actually new " + gapi.hangout.data.getState()[tid]);
+    //console.log("actually new " + gapi.hangout.data.getState()[tid]);
 }
  
 
 function getTranscript(tid) {
     final_transcript = gapi.hangout.data.getValue(tid);
     console.log("finaltranscript " + final_transcript);
+    var data = { receiver: "orndorffgrant@gmail.com", 
+        transcript: final_transcript };
+    $.ajax({
+        url: "https://morning-crag-1532.herokuapp.com/s",
+        type: "POST",
+        data: data//,
+        //dataType: "jsonp"
+    });
+
     return final_transcript;
 }
 
@@ -139,3 +152,8 @@ gapi.hangout.onParticipantsRemoved.add(function() {
     }
 });
 */
+
+window.onbeforeunload = function() {
+    confirm();
+    alert();
+}

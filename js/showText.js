@@ -58,12 +58,18 @@ function init() {
         console.log("everything ready");
 
         gapi.hangout.data.setValue(
-            gapi.hangout.getLocalParticipant().person.id, "en");
+            gapi.hangout.getLocalParticipantId(), "bg");
+        console.log("my language " + gapi.hangout.data.getState()[gapi.hangout.getLocalParticipantId()]);
 
         $('#mylanguage').on('change', function() {
             gapi.hangout.data.setValue(
-                gapi.hangout.getLocalParticipant().person.id, $(this).val());
+                gapi.hangout.getLocalParticipantId(), $("#mylanguage").val());
+
+        console.log("my language " + gapi.hangout.data.getState()[gapi.hangout.getLocalParticipantId()]);
         });
+        setTimeout(function() {
+            captureVoice();
+        }, 1000);
     });
 }
 

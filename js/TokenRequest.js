@@ -9,9 +9,14 @@ var translateSentence = function (sentence, source, dest) {
 
     var call = function (res) {
         result = res;
+        console.log(result.text[0]);
         return result.text[0];
     };
 
-    $.get(buildRequest, call);
+    $.ajax(buildRequest, {
+        success: call,
+        async: false
+    });
 
+    return result.text[0];
 }

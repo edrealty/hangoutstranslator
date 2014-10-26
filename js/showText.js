@@ -5,7 +5,7 @@ var lastOverlay;
 function createTextOverlay(string) {
   // Create a canvas to draw on
   var canvas = document.createElement('canvas');
-  canvasWidth = 1000;
+  canvasWidth = 3000;
   canvasHeight = 400;
   canvas.setAttribute('width', canvasWidth);
   canvas.setAttribute('height', canvasHeight);

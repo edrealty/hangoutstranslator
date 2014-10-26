@@ -48,9 +48,9 @@ charset = iso - 8859 - 1 " />
     <option value="uk">Ukrainian</option>
 </select>
 
-<button id="startTranslation"></button>
-<button id="sendTranscript"></button>
-<input id="myemail" />
+<button id="startTranslation">Start!</button>
+<button id="sendTranscript">Send Transcript</button>
+<input type="text" id="myemail" />
 
 
 <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/19963913/hangoutstranslator/js/showText.js"></script>

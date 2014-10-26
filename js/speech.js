@@ -71,7 +71,7 @@ function getTranscript() {
 }
 
 gapi.hangout.onParticipantsRemoved.add(function() {
-    if (gapi.hangout.getParticipants().length == 0) {
+    if (gapi.hangout.getParticipants().length == 1) {
         alert("HEY DONT LEAVE");
     }
 });

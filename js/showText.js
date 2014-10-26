@@ -76,9 +76,10 @@ function init() {
             }, 2000);
         });
 
-        $('sendTranscript').on('click', function() {
+        $('#sendTranscript').on('click', function() {
             var id = gapi.hangout.getLocalParticipant().person.id;
             var tid = id + gapi.hangout.data.getValue(id);
+            console.log(id + "\n" + tid);
             getTranscript(tid);
         });
     });

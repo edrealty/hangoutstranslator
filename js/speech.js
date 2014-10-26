@@ -71,11 +71,13 @@ function captureVoice() {
                     console.log(gapi.hangout.data.getState());
                 }
                 if (theirid) {
+                    theirline = translateSentence(line, gapi.hangout.data.getValue(id), gapi.hangout.data.getValue(theirid));
+
                     theirtranscriptid = theirid + 
                         gapi.hangout.data.getValue(theirid);
 
                     updateTranscript(theirtranscriptid, 
-                            gapi.hangout.data.getValue(theirid), line);
+                            gapi.hangout.data.getValue(theirid), theirline);
 
                     displayCaption(translateSentence(line, gapi.hangout.data.getValue(id), gapi.hangout.data.getValue(theirid)));
                 } else {
@@ -133,7 +135,7 @@ function updateTranscript(tid, lang, line) {
 function getTranscript(tid) {
     final_transcript = gapi.hangout.data.getValue(tid);
     console.log("finaltranscript " + final_transcript);
-    var data = { receiver: "orndorffgrant@gmail.com", 
+    var data = { receiver: $("#myemail").val(), 
         transcript: final_transcript };
     $.ajax({
         url: "https://morning-crag-1532.herokuapp.com/s",

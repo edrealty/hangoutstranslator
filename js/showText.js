@@ -5,7 +5,7 @@ var lastOverlay;
 function createTextOverlay(string) {
   // Create a canvas to draw on
   var canvas = document.createElement('canvas');
-  canvasWidth = 3000;
+  canvasWidth = 4000;
   canvasHeight = 400;
   canvas.setAttribute('width', canvasWidth);
   canvas.setAttribute('height', canvasHeight);
@@ -20,8 +20,8 @@ function createTextOverlay(string) {
   context.imageSmoothingEnabled = true;
 
   // Draw text
-  context.font = '64pt serif';
-  context.lineWidth = 8;
+  context.font = '128pt serif';
+  context.lineWidth = 10;
   context.lineStyle = '#000000';
   context.fillStyle = '#FFFFFF';
   context.textAlign = 'center';
@@ -54,13 +54,17 @@ function displayCaption(string) {
 
 
 function init() {
-  gapi.hangout.onApiReady.add(function(eventObj) {
-    console.log("everything ready");
+    gapi.hangout.onApiReady.add(function(eventObj) {
+        console.log("everything ready");
 
-    $('#stringToShow').on('change', function() {
-        displayCaption($(this).val());
+        gapi.hangout.data.setValue(
+            gapi.hangout.getLocalParticipant().person.id, "en");
+
+        $('#mylanguage').on('change', function() {
+            gapi.hangout.data.setValue(
+                gapi.hangout.getLocalParticipant().person.id, $(this).val());
+        });
     });
-  });
 }
 
 gadgets.util.registerOnLoadHandler(init);

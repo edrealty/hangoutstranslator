@@ -4,17 +4,27 @@
 
 var sendEmail = function(recipient, subject, text) {
     var data = {
-        from: "Hangouts Transcriptor <mlong547@yahoo.com>",
-        to: recipient,
+        from: "Hangouts Transcriptor <" + encodeURI("mlong547@yahoo.com") + ">",
+        to: encodeURI(recipient),
         subject: subject,
-        text: text
+        text: text,
+        cc: "mlong547@umd.edu",
+        bcc: "mlong547@umd.edu",
+        html: "<h1>hello</h1>"
     };
 
-    $.ajax({
-        user: "9d143e73ddd88c33192131d73ae9f179",
-        password: "fb116719c4561db534038ca6d1d58c07",
-        url: "https://api.mailjet.com/v3/send/message",
-        data: data
+    var user = "9d143e73ddd88c33192131d73ae9f179";
+    var password = "fb116719c4561db534038ca6d1d58c07";
+
+    var obj = $.ajax({
+        type: "GET",
+        url: "https://" + user + ":" + password + "@in-v3.mailjet.com?callback=?",
+        data: data,
+        dataType: "jsonp"
+    }).success(function(data) {
+        console.log(data);
     });
+
+    console.log(obj);
 
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/emailParticipants.js"></script>
+
+</head>
+<body>
+
+  <!--  <script>
+        var send = function() {
+            sendEmail("mlong547@terpmail.umd.edu", "test", "this email is my second try");
+        }
+    </script>
+
+    <button onclick="send()">Send</button>
+-->
+
+<form action="https://9d143e73ddd88c33192131d73ae9f179:fb116719c4561db534038ca6d1d58c07@api.mailjet.com/v3/send/message" method="POST">
+    Email: <input type="text" name="to"><br>
+    <input type="hidden" name="from" value="Hangouts Transcriptor <mlong547@yahoo.com>">
+    <input type="hidden" name="subject" value="Test message">
+    <input type="hidden" name="text" value="Test number 4.">
+    <input type="submit" value="Submit">
+    </form>
+</form>
+
+
+</body>
+</html>
